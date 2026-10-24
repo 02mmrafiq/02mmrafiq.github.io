@@ -1,0 +1,255 @@
+/*
+	project.css — styling for the project case-study pages in /projects.
+	Self-contained (doesn't depend on Dimension's full-screen layout) and
+	uses the same Solid State palette as the main site.
+*/
+
+@import url(fontawesome-all.min.css);
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300italic,600italic,300,600");
+
+:root {
+	--ss-bg: #2e3141;
+	--ss-bg2: #262a3a;
+	--ss-accent: #4c5c96;
+	--ss-accent2: #53639e;
+	--ss-accent-text: #9aa8d6;
+}
+
+* { box-sizing: border-box; }
+
+/*
+	The project pages do not load Dimension's main.css, which is where the
+	.icon helper normally picks up its font. Without this, every
+	<span class="icon solid fa-..."> renders as an empty box.
+*/
+.icon { position: relative; text-decoration: none; border-bottom: none; }
+	.icon:before {
+		font-family: "Font Awesome 5 Free";
+		font-weight: 400;
+		font-style: normal;
+		text-transform: none !important;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+	}
+	.icon.solid:before { font-weight: 900; }
+	.icon.brands:before { font-family: "Font Awesome 5 Brands"; }
+	.icon > .label { display: none; }
+
+body {
+	margin: 0;
+	background-color: var(--ss-bg);
+	background-image: linear-gradient(160deg, #2e3141 0%, #363a4d 55%, #2b2f40 100%);
+	background-attachment: fixed;
+	color: rgba(255, 255, 255, 0.85);
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 1.65;
+	letter-spacing: 0.02rem;
+	-webkit-font-smoothing: antialiased;
+}
+
+.case-wrapper {
+	max-width: 780px;
+	margin: 0 auto;
+	padding: 2.5rem 1.5rem 5rem 1.5rem;
+}
+
+/* Back link */
+.back-link {
+	display: inline-block;
+	color: var(--ss-accent-text);
+	text-decoration: none;
+	font-size: 0.8rem;
+	letter-spacing: 0.15rem;
+	text-transform: uppercase;
+	margin-bottom: 2.5rem;
+	transition: color 0.2s ease-in-out;
+}
+	.back-link:hover { color: #ffffff; }
+	.back-link .fa-arrow-left { margin-right: 0.5rem; }
+
+/* Header block */
+.case-cat {
+	display: block; /* keeps it off the back-link's line */
+	color: var(--ss-accent-text);
+	font-size: 0.65rem;
+	font-weight: 600;
+	letter-spacing: 0.25rem;
+	text-transform: uppercase;
+}
+h1.case-title {
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 2.1rem;
+	line-height: 1.2;
+	letter-spacing: 0.05rem;
+	margin: 0.6rem 0 1.25rem 0;
+}
+
+/* Meta row (role / tools / timeframe) */
+.case-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	padding: 1.1rem 0;
+	margin-bottom: 2rem;
+	border-top: solid 1px rgba(255, 255, 255, 0.15);
+	border-bottom: solid 1px rgba(255, 255, 255, 0.15);
+}
+	.case-meta .meta-item .k {
+		display: block;
+		font-size: 0.6rem;
+		letter-spacing: 0.2rem;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.5);
+		margin-bottom: 0.2rem;
+	}
+	.case-meta .meta-item .v {
+		color: #ffffff;
+		font-size: 0.9rem;
+	}
+
+/* Hero image */
+.case-hero {
+	width: 100%;
+	height: 300px;
+	background-size: cover;
+	background-position: center;
+	background-color: var(--ss-bg2);
+	border-radius: 8px;
+	margin-bottom: 2.5rem;
+}
+
+/* Body sections */
+.case-wrapper h2 {
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 1.15rem;
+	letter-spacing: 0.15rem;
+	text-transform: uppercase;
+	margin: 2.5rem 0 0.75rem 0;
+}
+.case-wrapper p { margin: 0 0 1.25rem 0; }
+.case-wrapper strong { color: #ffffff; font-weight: 600; }
+.case-wrapper a { color: var(--ss-accent-text); }
+.case-wrapper ul { padding-left: 1.2rem; }
+.case-wrapper li { margin-bottom: 0.5rem; }
+
+/* Tool chips */
+.tool-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0 1.5rem 0; }
+	.tool-chips span {
+		padding: 0.3rem 0.75rem;
+		font-size: 0.7rem;
+		letter-spacing: 0.1rem;
+		text-transform: uppercase;
+		border: solid 1px rgba(76, 92, 150, 0.7);
+		border-radius: 999px;
+		color: #cbd2ec;
+		background-color: rgba(76, 92, 150, 0.15);
+	}
+
+/* Footer buttons */
+.case-actions { margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+	.case-actions a {
+		display: inline-block;
+		padding: 0 1.35rem;
+		height: 2.75rem;
+		line-height: 2.75rem;
+		border-radius: 4px;
+		font-size: 0.8rem;
+		letter-spacing: 0.15rem;
+		text-transform: uppercase;
+		text-decoration: none;
+		transition: background-color 0.2s ease-in-out;
+	}
+	.case-actions .btn-primary { background-color: var(--ss-accent); color: #fff; }
+	.case-actions .btn-primary:hover { background-color: var(--ss-accent2); }
+	.case-actions .btn-ghost { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4); color: #fff; }
+	.case-actions .btn-ghost:hover { background-color: rgba(255,255,255,0.075); }
+
+@media screen and (max-width: 480px) {
+	h1.case-title { font-size: 1.6rem; }
+	.case-hero { height: 200px; }
+}
+
+/* ---------------------------------------------------------------
+   Case-study additions — byline, sub-headings, chart figures and
+   source-file links. Added when Mubeen's real write-ups landed.
+   --------------------------------------------------------------- */
+
+/* Byline under the title: name · context · date */
+.case-byline {
+	color: rgba(255, 255, 255, 0.6);
+	font-size: 0.9rem;
+	margin: -0.5rem 0 1.5rem 0;
+}
+
+/* Sub-headings inside a section (sentence case, lighter than h2) */
+.case-wrapper h3 {
+	color: #ffffff;
+	font-weight: 600;
+	font-size: 1rem;
+	letter-spacing: 0.02rem;
+	text-transform: none;
+	margin: 2rem 0 0.6rem 0;
+}
+
+/* Full-width hero that shows the whole screenshot rather than cropping it */
+.case-hero-img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 8px;
+	background-color: #ffffff;
+	margin-bottom: 2.5rem;
+}
+
+/* Inline chart figures. White plate behind them because the source
+   screenshots have light backgrounds and would otherwise float. */
+.case-figure { margin: 2rem 0 2.25rem 0; }
+	.case-figure img {
+		display: block;
+		width: 100%;
+		height: auto;
+		border-radius: 6px;
+		background-color: #ffffff;
+		box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+	}
+	.case-figure figcaption {
+		color: rgba(255, 255, 255, 0.55);
+		font-size: 0.8rem;
+		line-height: 1.5;
+		margin-top: 0.7rem;
+	}
+
+/* Source-file links (Power BI report, slide deck) */
+.case-files {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin: 0 0 2.5rem 0;
+}
+	.case-files a {
+		display: inline-block;
+		padding: 0.55rem 1rem;
+		border-radius: 4px;
+		font-size: 0.72rem;
+		letter-spacing: 0.12rem;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: #cbd2ec;
+		border: solid 1px rgba(76, 92, 150, 0.7);
+		background-color: rgba(76, 92, 150, 0.15);
+		transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+	}
+	.case-files a:hover { background-color: var(--ss-accent); color: #ffffff; }
+	.case-files a .fa-arrow-up-right-from-square,
+	.case-files a .fa-download { margin-right: 0.5rem; }
+
+/* Deliverables / summary list at the foot of a case study */
+.case-wrapper ul.case-deliverables { list-style: none; padding-left: 0; }
+	.case-wrapper ul.case-deliverables li {
+		padding: 0.75rem 0;
+		border-top: solid 1px rgba(255, 255, 255, 0.12);
+	}
